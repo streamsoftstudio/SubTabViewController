@@ -12,7 +12,7 @@ public class TabItem {
 	var tab: Int?
 	var viewController: UIViewController?
 	
-	init(title: String, tab: Int? = nil, viewController: UIViewController? = nil) {
+	public init(title: String, tab: Int? = nil, viewController: UIViewController? = nil) {
 		self.title = title
 		self.tab = tab
 		self.viewController = viewController

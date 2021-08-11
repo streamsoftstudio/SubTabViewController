@@ -10,4 +10,9 @@ import Foundation
 public struct MenuItemEntry {
 	var tabItem: TabItem
 	var subMenuItems: [MenuItemEntry]?
+	
+	public init(tabItem: TabItem, subMenuItems: [MenuItemEntry]?) {
+		self.tabItem = tabItem
+		self.subMenuItems = subMenuItems
+	}
 }
