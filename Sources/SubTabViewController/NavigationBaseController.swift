@@ -16,7 +16,7 @@ public class NavigationBaseController: UITabBarController {
 	var secondaryColor: UIColor!
 	var logoImage: UIImage!
 	
-	public init(tabItems:[MenuItemEntry], height: CGFloat = 156, primaryColor: UIColor = .blue, secondaryColor: UIColor = .white, logoImage: UIImage = UIImage()) {
+	public init(tabItems:[MenuItemEntry], height: CGFloat = 156, primaryColor: UIColor = .blue, secondaryColor: UIColor = .white, logoImage: UIImage = UIImage(named: "no_photo")!) {
 		self.tabItems = tabItems
 		self.height = height
 		self.primaryColor = primaryColor

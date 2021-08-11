@@ -31,7 +31,7 @@ class TabbedHeaderView: UIView {
 		}
 	}
 	
-	var logoImage: UIImage? = UIImage(named: "no_photo") {
+	var logoImage: UIImage! {
 		didSet {
 			self.applyLogo()
 		}
