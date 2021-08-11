@@ -39,6 +39,7 @@ public class NavigationBaseController: UITabBarController {
 	func loadTabBar() {
 		self.setupCustomTabBar(tabItems) { (controllers) in
 			self.viewControllers = controllers
+			self.customTabBar.slideActivityUnderButton(self.customTabBar.primaryButtons.first!, animated: false)
 		}
 		self.selectedIndex = 0 // default our selected index to the first item
 	}
@@ -62,6 +63,7 @@ public class NavigationBaseController: UITabBarController {
 			self.customTabBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
 			self.customTabBar.heightAnchor.constraint(equalToConstant: self.height)
 		])
+		self.customTabBar.layoutIfNeeded()
 		
 		for item in items {
 			if let submenuItems = item.subMenuItems {
@@ -73,8 +75,8 @@ public class NavigationBaseController: UITabBarController {
 		self.view.layoutIfNeeded() 
 		completion(controllers) // setup complete. handoff here
 	}
-	func changeTab(tab: TabItem) {
-		self.selectedIndex = tab.tab ?? 0
+	func changeTab(item: TabItem) {
+		self.selectedIndex = item.tab ?? 0
 	}
 }
 
