@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad12_9" orientation="portrait" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabbedHeaderView" customModule="AspenDental" customModuleProvider="target">
+            <connections>
+                <outlet property="bottomSectionBackgroundView" destination="E2I-YQ-B3b" id="Pu6-BR-qFU"/>
+                <outlet property="containerView" destination="iN0-l3-epB" id="007-Lg-adr"/>
+                <outlet property="logoImageView" destination="Scf-G6-dNH" id="Rv2-Zm-Y1b"/>
+                <outlet property="primaryActivityView" destination="eXE-um-kUX" id="hae-SU-IKL"/>
+                <outlet property="primaryMenuStack" destination="UnI-hO-deo" id="c7b-eq-7ou"/>
+                <outlet property="secondaryActivityView" destination="gIW-1y-5gL" id="qWo-4x-WRw"/>
+                <outlet property="secondaryMenuStack" destination="xhf-yZ-yH1" id="zAr-kb-WxL"/>
+                <outlet property="topSectionBackgroundView" destination="Xed-C7-GKX" id="qmg-F3-5d2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="156"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xed-C7-GKX">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="108"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AspenDentalLogo" translatesAutoresizingMaskIntoConstraints="NO" id="Scf-G6-dNH">
+                            <rect key="frame" x="27" y="32" width="226" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="8yI-Td-CFu"/>
+                                <constraint firstAttribute="width" constant="226" id="GPi-mN-gE2"/>
+                            </constraints>
+                        </imageView>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kT9-PA-SO1">
+                            <rect key="frame" x="261" y="30" width="715" height="48"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="UnI-hO-deo">
+                                    <rect key="frame" x="0.0" y="0.0" width="715" height="46"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bkY-1W-yqk">
+                                            <rect key="frame" x="0.0" y="0.0" width="715" height="46"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXE-um-kUX">
+                                    <rect key="frame" x="0.0" y="46" width="715" height="2"/>
+                                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="2" id="wb7-kT-kf1"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="nOu-7W-otZ"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.15686274509803921" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="Scf-G6-dNH" firstAttribute="leading" secondItem="Xed-C7-GKX" secondAttribute="leading" constant="27" id="7hb-yo-FAx"/>
+                        <constraint firstAttribute="trailing" secondItem="kT9-PA-SO1" secondAttribute="trailing" constant="48" id="B7Q-vA-to3"/>
+                        <constraint firstItem="kT9-PA-SO1" firstAttribute="centerY" secondItem="Xed-C7-GKX" secondAttribute="centerY" id="SMn-xq-Q9d"/>
+                        <constraint firstItem="Scf-G6-dNH" firstAttribute="centerY" secondItem="Xed-C7-GKX" secondAttribute="centerY" id="VSE-8c-vD1"/>
+                        <constraint firstItem="kT9-PA-SO1" firstAttribute="leading" secondItem="Scf-G6-dNH" secondAttribute="trailing" constant="8" symbolic="YES" id="wmr-TZ-OwW"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E2I-YQ-B3b">
+                    <rect key="frame" x="0.0" y="108" width="1024" height="48"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ec1-qi-ZlS">
+                            <rect key="frame" x="0.0" y="46" width="1024" height="2"/>
+                            <color key="backgroundColor" red="0.83921568627450982" green="0.85098039215686272" blue="0.85490196078431369" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="2" id="Wtr-5U-Li0"/>
+                            </constraints>
+                        </view>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="osa-Is-57q">
+                            <rect key="frame" x="27" y="0.0" width="949" height="47"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="xhf-yZ-yH1">
+                                    <rect key="frame" x="0.0" y="0.0" width="949" height="45"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X4Z-eV-ShY">
+                                            <rect key="frame" x="0.0" y="0.0" width="949" height="45"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </view>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </stackView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gIW-1y-5gL">
+                                    <rect key="frame" x="0.0" y="45" width="949" height="2"/>
+                                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="2" id="DoV-Qh-aof"/>
+                                    </constraints>
+                                </view>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="ec1-qi-ZlS" firstAttribute="leading" secondItem="E2I-YQ-B3b" secondAttribute="leading" id="1CO-cn-AwB"/>
+                        <constraint firstAttribute="bottom" secondItem="ec1-qi-ZlS" secondAttribute="bottom" id="1Gn-Ne-Up7"/>
+                        <constraint firstItem="osa-Is-57q" firstAttribute="top" secondItem="E2I-YQ-B3b" secondAttribute="top" id="EX2-Cj-uSu"/>
+                        <constraint firstAttribute="trailing" secondItem="ec1-qi-ZlS" secondAttribute="trailing" id="V1W-8X-QDm"/>
+                        <constraint firstItem="osa-Is-57q" firstAttribute="leading" secondItem="E2I-YQ-B3b" secondAttribute="leading" constant="27" id="as9-HV-xTU"/>
+                        <constraint firstAttribute="trailing" secondItem="osa-Is-57q" secondAttribute="trailing" constant="48" id="pLR-7I-772"/>
+                        <constraint firstAttribute="bottom" secondItem="osa-Is-57q" secondAttribute="bottom" constant="1" id="vQL-d4-jxn"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="E2I-YQ-B3b" firstAttribute="height" secondItem="Xed-C7-GKX" secondAttribute="height" multiplier="0.444444" id="1JN-tP-Apj"/>
+                <constraint firstItem="Xed-C7-GKX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="5hy-dX-PsT"/>
+                <constraint firstItem="Xed-C7-GKX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="FEc-ks-cbu"/>
+                <constraint firstItem="E2I-YQ-B3b" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="RTT-lo-hQG"/>
+                <constraint firstItem="E2I-YQ-B3b" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="cNi-K6-Yho"/>
+                <constraint firstItem="E2I-YQ-B3b" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="kzb-4v-72C"/>
+                <constraint firstItem="Xed-C7-GKX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xpE-xC-qHi"/>
+                <constraint firstItem="E2I-YQ-B3b" firstAttribute="top" secondItem="Xed-C7-GKX" secondAttribute="bottom" id="yGy-af-lFd"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="138.8671875" y="-162.95754026354317"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AspenDentalLogo" width="201" height="36"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
