@@ -14,12 +14,14 @@ public class NavigationBaseController: UITabBarController {
 	
 	var primaryColor: UIColor!
 	var secondaryColor: UIColor!
+	var logoImage: UIImage!
 	
-	public init(tabItems:[MenuItemEntry], height: CGFloat = 156, primaryColor: UIColor = .blue, secondaryColor: UIColor = .white) {
+	public init(tabItems:[MenuItemEntry], height: CGFloat = 156, primaryColor: UIColor = .blue, secondaryColor: UIColor = .white, logoImage: UIImage = UIImage()) {
 		self.tabItems = tabItems
 		self.height = height
 		self.primaryColor = primaryColor
 		self.secondaryColor = secondaryColor
+		self.logoImage = logoImage
 		super.init(nibName: "NavigationBaseController", bundle: nil)
 	}
 	
@@ -47,6 +49,7 @@ public class NavigationBaseController: UITabBarController {
 		self.customTabBar = TabbedHeaderView()
 		self.customTabBar.primaryColor = primaryColor
 		self.customTabBar.secondaryColor = secondaryColor
+		self.customTabBar.logoImage = self.logoImage
 		self.customTabBar.translatesAutoresizingMaskIntoConstraints = false
 		self.customTabBar.primaryMenuItems = items
 		self.customTabBar.clipsToBounds = false

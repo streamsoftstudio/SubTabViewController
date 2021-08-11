@@ -31,6 +31,12 @@ class TabbedHeaderView: UIView {
 		}
 	}
 	
+	var logoImage: UIImage? = UIImage(named: "no_photo") {
+		didSet {
+			self.applyLogo()
+		}
+	}
+	
 	weak var delegate: CustomTabbedHeaderDelegate?
 	var secondaryItemSelected: ((_ tab: TabItem) -> Void)?
 	
@@ -72,6 +78,10 @@ class TabbedHeaderView: UIView {
 		self.secondaryActivityView.backgroundColor = primaryColor
 		self.topSectionBackgroundView.backgroundColor = primaryColor
 		self.bottomSectionBackgroundView.backgroundColor = secondaryColor
+	}
+	
+	func applyLogo() {
+		self.logoImageView.image = logoImage
 	}
 	
 	func addConstraints() {
