@@ -178,8 +178,4 @@ class TabbedHeaderView: UIView {
 	}
 }
 
-public struct MenuItemEntry {
-	var tabItem: TabItem
-	var subMenuItems: [MenuItemEntry]?
-}
 
