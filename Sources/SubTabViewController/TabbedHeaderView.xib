@@ -8,7 +8,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabbedHeaderView" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TabbedHeaderView" customModule="SubTabViewController">
             <connections>
                 <outlet property="bottomSectionBackgroundView" destination="E2I-YQ-B3b" id="Pu6-BR-qFU"/>
                 <outlet property="containerView" destination="iN0-l3-epB" id="007-Lg-adr"/>
