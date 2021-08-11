@@ -20,8 +20,16 @@ class TabbedHeaderView: UIView {
 	@IBOutlet weak var topSectionBackgroundView: UIView!
 	@IBOutlet weak var bottomSectionBackgroundView: UIView!
 	
-	var primaryColor: UIColor! = .blue
-	var secondaryColor: UIColor! = .white
+	var primaryColor: UIColor! = .blue {
+		didSet {
+			self.applyColors()
+		}
+	}
+	var secondaryColor: UIColor! = .white {
+		didSet {
+			self.applyColors()
+		}
+	}
 	
 	weak var delegate: CustomTabbedHeaderDelegate?
 	var secondaryItemSelected: ((_ tab: TabItem) -> Void)?
@@ -56,11 +64,14 @@ class TabbedHeaderView: UIView {
 		nib.instantiate(withOwner: self, options: nil)
 		self.containerView.translatesAutoresizingMaskIntoConstraints = false
 		self.addSubview(containerView)
-		self.primaryActivityView.backgroundColor = .white
-		self.secondaryActivityView.backgroundColor = .blue
+		self.addConstraints()
+	}
+	
+	func applyColors() {
+		self.primaryActivityView.backgroundColor = secondaryColor
+		self.secondaryActivityView.backgroundColor = primaryColor
 		self.topSectionBackgroundView.backgroundColor = primaryColor
 		self.bottomSectionBackgroundView.backgroundColor = secondaryColor
-		self.addConstraints()
 	}
 	
 	func addConstraints() {
@@ -108,7 +119,7 @@ class TabbedHeaderView: UIView {
 	}
 	
 	private func createButton(_ entry: MenuItemEntry, type: MenuType) -> MenuItemButton {
-		let button = MenuItemButton(title: entry.tabItem.title, type: type)
+		let button = MenuItemButton(title: entry.tabItem.title, type: type, primaryTextColor: secondaryColor, secondaryTextColor: primaryColor)
 		
 		switch type {
 			case .primary: button.addTarget(self, action: #selector(primarySegmentSelected), for: .touchUpInside)

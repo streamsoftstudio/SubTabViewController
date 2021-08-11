@@ -27,6 +27,8 @@ class MenuItemButton: UIButton {
 		super.init(frame: CGRect.zero)
 		self.text = title
 		self.type = type
+		self.primaryTextColor = primaryTextColor
+		self.secondaryTextColor = secondaryTextColor
 		setupButton()
 	}
 	
@@ -70,7 +72,7 @@ class MenuItemButton: UIButton {
 	
 	private func changeColorForState(_ selected: Bool) {
 		switch type {
-			case .primary: 	 self.textLabel.textColor = .white
+			case .primary: 	 self.textLabel.textColor = primaryTextColor
 			case .secondary: self.textLabel.textColor = selected ? secondaryTextColor : .darkGray
 		}
 		self.textLabel.font = selected ? UIFont(name: "MessinaSans-SemiBold", size: 14) : UIFont(name: "MessinaSans-Book", size: 14)
