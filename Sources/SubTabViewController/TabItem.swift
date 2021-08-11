@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabItem {
+public class TabItem {
 	let title: String
 	var tab: Int?
 	var viewController: UIViewController?
