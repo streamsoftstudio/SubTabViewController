@@ -51,7 +51,7 @@ class TabbedHeaderView: UIView {
 	}
 	
 	func commonInit() {
-		let bundle = Bundle(for: type(of: self))
+		let bundle = Bundle.module
 		let nib = UINib(nibName: "TabbedHeaderView", bundle: bundle)
 		nib.instantiate(withOwner: self, options: nil)
 		self.containerView.translatesAutoresizingMaskIntoConstraints = false
