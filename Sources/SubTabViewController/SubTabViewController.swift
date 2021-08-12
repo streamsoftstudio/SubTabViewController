@@ -20,7 +20,8 @@ public class SubTabViewController: UITabBarController {
 	var logoImage: UIImage!
 	///Set this property to `false` if you do not want the logo. Default value is `true`.
 	var shouldDisplayLogo: Bool!
-	
+	///Covers status backround view, so that the status bar is inside the tab bar. Defaults to `false`, which results in respecting the safeArea.
+	var coverStatusBar: Bool!
 	
 	/// Initializer for NavigationBarController
 	/// - Parameters:
@@ -30,12 +31,19 @@ public class SubTabViewController: UITabBarController {
 	///   - secondaryColor: A background color of a sub menu. This would also be the color of primary menu's activity bar and text. Defaults to UIColor.white.
 	///   - logoImage: An optional logo image
 	///   - shouldDisplayLogo: Set this property to `false` if you do not want the logo. Default value is `true`. In case this property is `true` and the `logoImage` property is not provided, logo placeholder will display a generic "no_image" UIImage.
-	public init(tabItems:[MenuItemEntry], height: CGFloat = 156, primaryColor: UIColor = .blue, secondaryColor: UIColor = .white, logoImage: UIImage? = nil, shouldDisplayLogo: Bool = true) {
+	public init(tabItems:[MenuItemEntry],
+				height: CGFloat = 156,
+				primaryColor: UIColor = .blue,
+				secondaryColor: UIColor = .white,
+				logoImage: UIImage? = nil,
+				shouldDisplayLogo: Bool = true,
+				coverStatusBar: Bool = false) {
 		self.tabItems = tabItems
 		self.height = height
 		self.primaryColor = primaryColor
 		self.secondaryColor = secondaryColor
 		self.shouldDisplayLogo = shouldDisplayLogo
+		self.coverStatusBar = coverStatusBar
 		
 		let image = Bundle.module.path(forResource: "no_image", ofType: "png")
 		self.logoImage = logoImage ?? UIImage(named: image!)
@@ -78,12 +86,21 @@ public class SubTabViewController: UITabBarController {
 		self.customTabBar.secondaryItemSelected = self.changeTab
 		// Add it to the view
 		self.view.addSubview(customTabBar)
-		NSLayoutConstraint.activate([
-			self.customTabBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-			self.customTabBar.topAnchor.constraint(equalTo: self.view.topAnchor),
-			self.customTabBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-			self.customTabBar.heightAnchor.constraint(equalToConstant: self.height)
-		])
+		if coverStatusBar {
+			NSLayoutConstraint.activate([
+				self.customTabBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+				self.customTabBar.topAnchor.constraint(equalTo: self.view.topAnchor),
+				self.customTabBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+				self.customTabBar.heightAnchor.constraint(equalToConstant: self.height)
+			])
+		} else {
+			NSLayoutConstraint.activate([
+				self.customTabBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
+				self.customTabBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+				self.customTabBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
+				self.customTabBar.heightAnchor.constraint(equalToConstant: self.height)
+			])
+		}
 		self.customTabBar.layoutIfNeeded()
 		
 		for item in items {

@@ -73,6 +73,16 @@ class TabbedHeaderView: UIView {
 		self.addConstraints()
 	}
 	
+	func addConstraints() {
+		NSLayoutConstraint.activate([
+			self.topAnchor.constraint(equalTo: containerView.topAnchor),
+			self.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+			self.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+			self.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+		])
+		self.layoutIfNeeded()
+	}
+	
 	func applyColors() {
 		self.primaryActivityView.backgroundColor = secondaryColor
 		self.secondaryActivityView.backgroundColor = primaryColor
@@ -82,16 +92,6 @@ class TabbedHeaderView: UIView {
 	
 	func applyLogo() {
 		self.logoImageView.image = logoImage
-	}
-	
-	func addConstraints() {
-		NSLayoutConstraint.activate([
-			self.topAnchor.constraint(equalTo: containerView.topAnchor),
-			self.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-			self.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-			self.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
-		])
-		self.layoutIfNeeded()
 	}
 	
 	func setupPrimaryMenu() {

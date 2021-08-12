@@ -3,7 +3,6 @@
     <device id="ipad12_9" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,7 +20,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="1024" height="156"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xed-C7-GKX">
@@ -114,16 +113,15 @@
                     </constraints>
                 </view>
             </subviews>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="E2I-YQ-B3b" firstAttribute="height" secondItem="Xed-C7-GKX" secondAttribute="height" multiplier="0.444444" id="1JN-tP-Apj"/>
-                <constraint firstItem="Xed-C7-GKX" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="5hy-dX-PsT"/>
-                <constraint firstItem="Xed-C7-GKX" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="FEc-ks-cbu"/>
-                <constraint firstItem="E2I-YQ-B3b" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="RTT-lo-hQG"/>
-                <constraint firstItem="E2I-YQ-B3b" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="cNi-K6-Yho"/>
-                <constraint firstItem="E2I-YQ-B3b" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="kzb-4v-72C"/>
-                <constraint firstItem="Xed-C7-GKX" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="xpE-xC-qHi"/>
+                <constraint firstItem="Xed-C7-GKX" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="FEc-ks-cbu"/>
+                <constraint firstItem="E2I-YQ-B3b" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="RTT-lo-hQG"/>
+                <constraint firstItem="Xed-C7-GKX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bZ4-g9-R4a"/>
+                <constraint firstItem="E2I-YQ-B3b" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="kzb-4v-72C"/>
+                <constraint firstAttribute="bottom" secondItem="E2I-YQ-B3b" secondAttribute="bottom" id="l6B-qA-Mam"/>
+                <constraint firstItem="Xed-C7-GKX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xpE-xC-qHi"/>
                 <constraint firstItem="E2I-YQ-B3b" firstAttribute="top" secondItem="Xed-C7-GKX" secondAttribute="bottom" id="yGy-af-lFd"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
