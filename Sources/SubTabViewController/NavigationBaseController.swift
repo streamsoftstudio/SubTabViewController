@@ -12,11 +12,24 @@ public class NavigationBaseController: UITabBarController {
 	var tabItems: [MenuItemEntry] = []
 	var height: CGFloat!
 	
+	///A background color of a primary menu. This would also be the color of sub menu's activity bar and text.
 	var primaryColor: UIColor!
+	///A background color of a sub menu. This would also be the color of primary menu's activity bar and text.
 	var secondaryColor: UIColor!
+	///An optional logo image
 	var logoImage: UIImage!
+	///Set this property to `false` if you do not want the logo. Default value is `true`.
 	var shouldDisplayLogo: Bool!
 	
+	
+	/// Initializer for NavigationBarController
+	/// - Parameters:
+	///   - tabItems: An array of primary menu items, with their respective sub menu items.
+	///   - height: Overall height of the NavigationBarController. The height is distributed among the primary and secondary bars in approximate 3:1 ratio. Defaults to 156
+	///   - primaryColor: A background color of a primary menu. This would also be the color of sub menu's activity bar and text. Defaults to UIColor.blue.
+	///   - secondaryColor: A background color of a sub menu. This would also be the color of primary menu's activity bar and text. Defaults to UIColor.white.
+	///   - logoImage: An optional logo image
+	///   - shouldDisplayLogo: Set this property to `false` if you do not want the logo. Default value is `true`. In case this property is `true` and the `logoImage` property is not provided, logo placeholder will display a generic "no_image" UIImage.
 	public init(tabItems:[MenuItemEntry], height: CGFloat = 156, primaryColor: UIColor = .blue, secondaryColor: UIColor = .white, logoImage: UIImage? = nil, shouldDisplayLogo: Bool = true) {
 		self.tabItems = tabItems
 		self.height = height

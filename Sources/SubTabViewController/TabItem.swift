@@ -7,6 +7,7 @@
 
 import UIKit
 
+///Represents a primary menu item which itself, does not contain a ViewController, but is merely a segue to one of its sub tabs.
 public class PrimaryTabItem: MenuButton {
 	var title: String
 	var subMenuItems: [SubMenuTabItem]?
@@ -16,6 +17,7 @@ public class PrimaryTabItem: MenuButton {
 	}
 }
 
+///Represents a sub menu item which contains a ViewController.
 public class SubMenuTabItem: MenuButton {
 	var title: String
 	var tab: Int?
