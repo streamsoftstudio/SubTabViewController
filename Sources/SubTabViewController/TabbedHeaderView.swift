@@ -7,7 +7,7 @@
 
 import UIKit
 protocol CustomTabbedHeaderDelegate: AnyObject {
-	func didSelectSegment(entry:MenuItemEntry)
+	func didSelectSegment(entry:SubMenuTabItem)
 }
 class TabbedHeaderView: UIView {
 
@@ -38,14 +38,14 @@ class TabbedHeaderView: UIView {
 	}
 	
 	weak var delegate: CustomTabbedHeaderDelegate?
-	var secondaryItemSelected: ((_ tab: TabItem) -> Void)?
+	var secondaryItemSelected: ((_ tab: SubMenuTabItem) -> Void)?
 	
 	var primaryMenuItems: [MenuItemEntry]! {
 		didSet {
 			self.setupPrimaryMenu()
 		}
 	}
-	var secondaryMenuItems: [MenuItemEntry]!
+	var secondaryMenuItems: [SubMenuTabItem]!
 	var primaryButtons: [MenuItemButton] = []
 	var secondaryButtons: [MenuItemButton] = []
 	
@@ -96,11 +96,11 @@ class TabbedHeaderView: UIView {
 	
 	func setupPrimaryMenu() {
 		primaryMenuItems.forEach {$0.subMenuItems?.forEach {
-			$0.tabItem.tab = overallSubmenusCount
+			$0.tab = overallSubmenusCount
 			overallSubmenusCount += 1
 		}}
 		for (index, prim) in primaryMenuItems.enumerated() {
-			let primaryButton = createButton(prim, type: .primary)
+			let primaryButton = createButton(prim as! MenuButton, type: .primary)
 			primaryButton.tag = index
 			
 			primaryMenuStack.addArrangedSubview(primaryButton)
@@ -128,8 +128,8 @@ class TabbedHeaderView: UIView {
 		secondarySegmentSelected(sender: secondaryButtons.first!)
 	}
 	
-	private func createButton(_ entry: MenuItemEntry, type: MenuType) -> MenuItemButton {
-		let button = MenuItemButton(title: entry.tabItem.title, type: type, primaryTextColor: secondaryColor, secondaryTextColor: primaryColor)
+	private func createButton(_ entry: MenuButton, type: MenuType) -> MenuItemButton {
+		let button = MenuItemButton(title: entry.title, type: type, primaryTextColor: secondaryColor, secondaryTextColor: primaryColor)
 		
 		switch type {
 			case .primary: button.addTarget(self, action: #selector(primarySegmentSelected), for: .touchUpInside)
@@ -162,7 +162,7 @@ class TabbedHeaderView: UIView {
 			if button.isSelected {
 				self.slideActivityUnderButton(button)
 				self.currentlyActiveSecondaryMenuButton = button
-				self.secondaryItemSelected?(secondaryMenuItems[index].tabItem)
+				self.secondaryItemSelected?(secondaryMenuItems[index])
 				self.delegate?.didSelectSegment(entry: secondaryMenuItems[index])
 			}
 		}

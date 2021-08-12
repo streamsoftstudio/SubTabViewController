@@ -68,21 +68,21 @@ public class NavigationBaseController: UITabBarController {
 		for item in items {
 			if let submenuItems = item.subMenuItems {
 				for i in 0..<submenuItems.count {
-					controllers.append(item.subMenuItems![i].tabItem.viewController!)
+					controllers.append(item.subMenuItems![i].viewController)
 				}
 			}
 		}
 		self.view.layoutIfNeeded() 
 		completion(controllers) // setup complete. handoff here
 	}
-	func changeTab(item: TabItem) {
-		self.selectedIndex = item.tab ?? 0
+	func changeTab(item: SubMenuTabItem) {
+		self.selectedIndex = item.tab 
 	}
 }
 
 extension NavigationBaseController: CustomTabbedHeaderDelegate {
-	func didSelectSegment(entry: MenuItemEntry) {
-		print("Selected: \(entry.tabItem.title)")
+	func didSelectSegment(entry: SubMenuTabItem) {
+		print("Selected: \(entry.title)")
 	}
 }
 
