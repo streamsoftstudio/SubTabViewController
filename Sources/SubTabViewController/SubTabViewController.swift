@@ -36,7 +36,9 @@ public class SubTabViewController: UITabBarController {
 		self.primaryColor = primaryColor
 		self.secondaryColor = secondaryColor
 		self.shouldDisplayLogo = shouldDisplayLogo
-		self.logoImage = logoImage ?? UIImage(named: "no_image")
+		
+		let image = Bundle.module.path(forResource: "no_image", ofType: "png")
+		self.logoImage = logoImage ?? UIImage(named: image!)
 		super.init(nibName: "NavigationBaseController", bundle: nil)
 	}
 	
