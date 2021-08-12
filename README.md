@@ -15,14 +15,14 @@ To include `SubTabViewController` in a Swift package, simply add it to the depen
 
 ```Swift
 dependencies: [
-	.package(url: "https://github.com/streamsoftstudio/SubTabViewController.git", .upToNextMinor(from: "1.0.0"))
+	.package(url: "https://github.com/streamsoftstudio/SubTabViewController.git", .upToNextMinor(from: "1.0.1"))
 ]
 ```
 # _Using the `SubTabViewController`_
 In order to use `SubTabViewController` in your application, there are a few steps that you would need to take.
 
 ## **_Initialization_**
-Instantiate the `NavigationBaseController` as usual, via 
+Instantiate the `SubTabViewController` as usual, via 
 
 `public init(tabItems:height:primaryColor:secondaryColor:logoImage:shouldDisplayLogo:)`
 
@@ -74,13 +74,13 @@ This array needs to be formed as per example below:
 ```
 
 ```Swift
-	let navBase = NavigationBaseController(tabItems: menues,
+	let subTabViewController = SubTabViewController(tabItems: menues,
 										   height: 200,
 										   primaryColor: .myCustomPrimaryColor,
 										   secondaryColor: .myCustomSecondaryColor,
 										   logoImage: UIImage(named: "myLogoImage"),
 										   shouldDisplayLogo: true)
 	
-	navBase.modalPresentationStyle = .fullScreen
-	present(navBase, animated: true, completion: nil)
+	subTabViewController.modalPresentationStyle = .fullScreen
+	present(subTabViewController, animated: true, completion: nil)
 ```

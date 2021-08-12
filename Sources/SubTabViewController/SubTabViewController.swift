@@ -1,5 +1,5 @@
 //
-//  NavigationBaseController.swift
+//  SubTabViewController.swift
 //  AspenDental
 //
 //  Created by Dusan Juranovic on 7.6.21..
@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class NavigationBaseController: UITabBarController {
+public class SubTabViewController: UITabBarController {
 	var customTabBar: TabbedHeaderView!
 	var tabItems: [MenuItemEntry] = []
 	var height: CGFloat!
@@ -99,7 +99,7 @@ public class NavigationBaseController: UITabBarController {
 	}
 }
 
-extension NavigationBaseController: CustomTabbedHeaderDelegate {
+extension SubTabViewController: CustomTabbedHeaderDelegate {
 	func didSelectSegment(entry: SubMenuTabItem) {
 		print("Selected: \(entry.title)")
 	}
