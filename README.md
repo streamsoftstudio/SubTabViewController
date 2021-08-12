@@ -15,7 +15,7 @@ To include `SubTabViewController` in a Swift package, simply add it to the depen
 
 ```Swift
 dependencies: [
-	.package(url: "https://github.com/streamsoftstudio/SubTabViewController.git", .upToNextMinor(from: "1.0.1"))
+	.package(url: "https://github.com/streamsoftstudio/SubTabViewController.git", .upToNextMinor(from: "1.0.3"))
 ]
 ```
 # _Using the `SubTabViewController`_
@@ -32,12 +32,13 @@ import SubTabViewController
 ```
 
 Values for the init are as follows:
-- tabItems: An array of primary menu items, with their respective sub menu items."
-- height: Overall height of the NavigationBarController. The height is distributed among the primary and secondary bars in approximate 3:1 ratio. Defaults to 156"
-- primaryColor: A background color of a primary menu. This would also be the color of sub menu's activity bar and text. Defaults to UIColor.blue."
-- secondaryColor: A background color of a sub menu. This would also be the color of primary menu's activity bar and text. Defaults to UIColor.white."
-- logoImage: An optional logo image"
-- shouldDisplayLogo: Set this property to `false` if you do not want the logo. Default value is `true`. In case this property is `true` and the `logoImage` property is not provided, logo placeholder will display a generic "no_image" UIImage."
+- tabItems: An array of primary menu items, with their respective sub menu items.
+- height: Overall height of the NavigationBarController. The height is distributed among the primary and secondary bars in approximate 3:1 ratio. Defaults to 156
+- primaryColor: A background color of a primary menu. This would also be the color of sub menu's activity bar and text. Defaults to UIColor.blue.
+- secondaryColor: A background color of a sub menu. This would also be the color of primary menu's activity bar and text. Defaults to UIColor.white.
+- logoImage: An optional logo image
+- shouldDisplayLogo: Set this property to `false` if you do not want the logo. Default value is `true`. In case this property is `true` and the `logoImage` property is not provided, logo placeholder will display a generic "no_image" UIImage.
+- coversStatusBar: Covers status view, so that the status bar is inside the tab bar. Defaults to `false`, which results in respecting the safeArea.
 
 NOTE: Some of the properties have default values and can be ommited from the initializer if default values are what you need.
 
@@ -75,11 +76,12 @@ This array needs to be formed as per example below:
 
 ```Swift
 	let subTabViewController = SubTabViewController(tabItems: menues,
-										   height: 200,
-										   primaryColor: .myCustomPrimaryColor,
-										   secondaryColor: .myCustomSecondaryColor,
-										   logoImage: UIImage(named: "myLogoImage"),
-										   shouldDisplayLogo: true)
+													height: 200,
+													primaryColor: .myCustomPrimaryColor,
+													secondaryColor: .myCustomSecondaryColor,
+													logoImage: UIImage(named: "myLogoImage"),
+													shouldDisplayLogo: true,
+													coverStatusBar: true)
 	
 	subTabViewController.modalPresentationStyle = .fullScreen
 	present(subTabViewController, animated: true, completion: nil)

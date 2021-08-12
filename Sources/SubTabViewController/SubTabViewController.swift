@@ -31,6 +31,7 @@ public class SubTabViewController: UITabBarController {
 	///   - secondaryColor: A background color of a sub menu. This would also be the color of primary menu's activity bar and text. Defaults to UIColor.white.
 	///   - logoImage: An optional logo image
 	///   - shouldDisplayLogo: Set this property to `false` if you do not want the logo. Default value is `true`. In case this property is `true` and the `logoImage` property is not provided, logo placeholder will display a generic "no_image" UIImage.
+	///   - coversStatusBar: Covers status view, so that the status bar is inside the tab bar. Defaults to `false`, which results in respecting the safeArea.
 	public init(tabItems:[MenuItemEntry],
 				height: CGFloat = 156,
 				primaryColor: UIColor = .blue,
