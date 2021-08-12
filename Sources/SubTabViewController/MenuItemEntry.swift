@@ -11,10 +11,8 @@ protocol MenuButton {
 }
 public struct MenuItemEntry {
 	var tabItem: PrimaryTabItem
-	var subMenuItems: [SubMenuTabItem]?
 	
-	public init(tabItem: PrimaryTabItem, subMenuItems: [SubMenuTabItem]?) {
+	public init(tabItem: PrimaryTabItem) {
 		self.tabItem = tabItem
-		self.subMenuItems = subMenuItems
 	}
 }

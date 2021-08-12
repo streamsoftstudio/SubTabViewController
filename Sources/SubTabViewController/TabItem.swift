@@ -18,12 +18,11 @@ public class PrimaryTabItem: MenuButton {
 
 public class SubMenuTabItem: MenuButton {
 	var title: String
-	var tab: Int
+	var tab: Int?
 	var viewController: UIViewController
 	
-	public init(title: String, tab: Int, viewController: UIViewController) {
+	public init(title: String, viewController: UIViewController) {
 		self.title = title
-		self.tab = tab
 		self.viewController = viewController
 	}
 }

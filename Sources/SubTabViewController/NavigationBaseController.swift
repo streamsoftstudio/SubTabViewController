@@ -15,13 +15,15 @@ public class NavigationBaseController: UITabBarController {
 	var primaryColor: UIColor!
 	var secondaryColor: UIColor!
 	var logoImage: UIImage!
+	var shouldDisplayLogo: Bool!
 	
-	public init(tabItems:[MenuItemEntry], height: CGFloat = 156, primaryColor: UIColor = .blue, secondaryColor: UIColor = .white, logoImage: UIImage? = UIImage(named: "no_image")) {
+	public init(tabItems:[MenuItemEntry], height: CGFloat = 156, primaryColor: UIColor = .blue, secondaryColor: UIColor = .white, logoImage: UIImage? = nil, shouldDisplayLogo: Bool = true) {
 		self.tabItems = tabItems
 		self.height = height
 		self.primaryColor = primaryColor
 		self.secondaryColor = secondaryColor
-		self.logoImage = logoImage
+		self.shouldDisplayLogo = shouldDisplayLogo
+		self.logoImage = logoImage ?? UIImage(named: "no_image")
 		super.init(nibName: "NavigationBaseController", bundle: nil)
 	}
 	
@@ -50,7 +52,7 @@ public class NavigationBaseController: UITabBarController {
 		self.customTabBar = TabbedHeaderView()
 		self.customTabBar.primaryColor = primaryColor
 		self.customTabBar.secondaryColor = secondaryColor
-		self.customTabBar.logoImage = self.logoImage
+		self.customTabBar.logoImage = self.shouldDisplayLogo ? self.logoImage : UIImage()
 		self.customTabBar.translatesAutoresizingMaskIntoConstraints = false
 		self.customTabBar.primaryMenuItems = items
 		self.customTabBar.clipsToBounds = false
@@ -66,9 +68,9 @@ public class NavigationBaseController: UITabBarController {
 		self.customTabBar.layoutIfNeeded()
 		
 		for item in items {
-			if let submenuItems = item.subMenuItems {
+			if let submenuItems = item.tabItem.subMenuItems {
 				for i in 0..<submenuItems.count {
-					controllers.append(item.subMenuItems![i].viewController)
+					controllers.append(item.tabItem.subMenuItems![i].viewController)
 				}
 			}
 		}
@@ -76,7 +78,7 @@ public class NavigationBaseController: UITabBarController {
 		completion(controllers) // setup complete. handoff here
 	}
 	func changeTab(item: SubMenuTabItem) {
-		self.selectedIndex = item.tab 
+		self.selectedIndex = item.tab ?? 0
 	}
 }
 

@@ -95,12 +95,12 @@ class TabbedHeaderView: UIView {
 	}
 	
 	func setupPrimaryMenu() {
-		primaryMenuItems.forEach {$0.subMenuItems?.forEach {
+		primaryMenuItems.forEach {$0.tabItem.subMenuItems?.forEach {
 			$0.tab = overallSubmenusCount
 			overallSubmenusCount += 1
 		}}
 		for (index, prim) in primaryMenuItems.enumerated() {
-			let primaryButton = createButton(prim as! MenuButton, type: .primary)
+			let primaryButton = createButton(prim.tabItem, type: .primary)
 			primaryButton.tag = index
 			
 			primaryMenuStack.addArrangedSubview(primaryButton)
@@ -116,14 +116,14 @@ class TabbedHeaderView: UIView {
 			view.removeFromSuperview()
 		}
 		secondaryButtons = []
-		guard let secondaryItems = primaryMenuItem.subMenuItems else {return}
+		guard let secondaryItems = primaryMenuItem.tabItem.subMenuItems else {return}
 		for (index, sec) in secondaryItems.enumerated() {
 			let secondaryButton = createButton(sec, type: .secondary)
 			secondaryButton.tag = index
 			secondaryMenuStack.insertArrangedSubview(secondaryButton, at: secondaryMenuStack.subviews.count - 1)
 			secondaryButtons.append(secondaryButton)
 		}
-		secondaryMenuItems = primaryMenuItem.subMenuItems
+		secondaryMenuItems = primaryMenuItem.tabItem.subMenuItems
 		secondaryMenuStack.layoutIfNeeded()
 		secondarySegmentSelected(sender: secondaryButtons.first!)
 	}
