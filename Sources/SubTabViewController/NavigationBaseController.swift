@@ -51,10 +51,14 @@ public class NavigationBaseController: UITabBarController {
 		customTabBar.delegate = self
 	}
 	
+	public override func viewWillAppear(_ animated: Bool) {
+		super.viewWillAppear(animated)
+		self.customTabBar.primarySegmentSelected(sender: self.customTabBar.primaryButtons.first!)
+	}
+	
 	func loadTabBar() {
 		self.setupCustomTabBar(tabItems) { (controllers) in
 			self.viewControllers = controllers
-			self.customTabBar.slideActivityUnderButton(self.customTabBar.primaryButtons.first!, animated: false)
 		}
 		self.selectedIndex = 0 // default our selected index to the first item
 	}

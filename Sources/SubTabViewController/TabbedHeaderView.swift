@@ -107,8 +107,6 @@ class TabbedHeaderView: UIView {
 			primaryButtons.append(primaryButton)
 		}
 		self.primaryMenuStack.layoutIfNeeded()
-		let firstStackButton = primaryMenuStack.subviews.first(where: {$0 is MenuItemButton}) as! MenuItemButton
-		primarySegmentSelected(sender: firstStackButton)
 	}
 	
 	func updateSecondaryMenu(for primaryMenuItem: MenuItemEntry) {
