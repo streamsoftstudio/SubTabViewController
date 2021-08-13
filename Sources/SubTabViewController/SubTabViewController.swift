@@ -21,8 +21,9 @@ public class SubTabViewController: UITabBarController {
 	///Set this property to `false` if you do not want the logo. Default value is `true`.
 	var shouldDisplayLogo: Bool!
 	///Covers status backround view, so that the status bar is inside the tab bar. Defaults to `false`, which results in respecting the safeArea.
-	var coverStatusBar: Bool!
-	
+	var respectSafeAreas: Bool!
+	///Position the TabBar on `.top` or `.bottom` of the SubTabViewController.
+	var position: TabBarPosition!
 	/// Initializer for NavigationBarController
 	/// - Parameters:
 	///   - tabItems: An array of primary menu items, with their respective sub menu items.
@@ -31,20 +32,23 @@ public class SubTabViewController: UITabBarController {
 	///   - secondaryColor: A background color of a sub menu. This would also be the color of primary menu's activity bar and text. Defaults to UIColor.white.
 	///   - logoImage: An optional logo image
 	///   - shouldDisplayLogo: Set this property to `false` if you do not want the logo. Default value is `true`. In case this property is `true` and the `logoImage` property is not provided, logo placeholder will display a generic "no_image" UIImage.
-	///   - coversStatusBar: Covers status view, so that the status bar is inside the tab bar. Defaults to `false`, which results in respecting the safeArea.
+	///   - respectSafeAreas: Bool indicating whether tab bar respect the safe areas. Defaults to `true`.
+	///	  - position: Position the TabBar on `.top` or `.bottom` of the SubTabViewController. Defaults to `.top`.
 	public init(tabItems:[MenuItemEntry],
 				height: CGFloat = 156,
 				primaryColor: UIColor = .blue,
 				secondaryColor: UIColor = .white,
 				logoImage: UIImage? = nil,
 				shouldDisplayLogo: Bool = true,
-				coverStatusBar: Bool = false) {
+				respectSafeAreas: Bool = true,
+				position:  TabBarPosition = .top) {
 		self.tabItems = tabItems
 		self.height = height
 		self.primaryColor = primaryColor
 		self.secondaryColor = secondaryColor
 		self.shouldDisplayLogo = shouldDisplayLogo
-		self.coverStatusBar = coverStatusBar
+		self.respectSafeAreas = respectSafeAreas
+		self.position = position
 		
 		let image = Bundle.module.path(forResource: "no_image", ofType: "png")
 		self.logoImage = logoImage ?? UIImage(named: image!)
@@ -87,21 +91,8 @@ public class SubTabViewController: UITabBarController {
 		self.customTabBar.secondaryItemSelected = self.changeTab
 		// Add it to the view
 		self.view.addSubview(customTabBar)
-		if coverStatusBar {
-			NSLayoutConstraint.activate([
-				self.customTabBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-				self.customTabBar.topAnchor.constraint(equalTo: self.view.topAnchor),
-				self.customTabBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-				self.customTabBar.heightAnchor.constraint(equalToConstant: self.height)
-			])
-		} else {
-			NSLayoutConstraint.activate([
-				self.customTabBar.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
-				self.customTabBar.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-				self.customTabBar.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-				self.customTabBar.heightAnchor.constraint(equalToConstant: self.height)
-			])
-		}
+		
+		self.layoutFor(self.position, safeAreas: self.respectSafeAreas)
 		self.customTabBar.layoutIfNeeded()
 		
 		for item in items {
@@ -114,6 +105,25 @@ public class SubTabViewController: UITabBarController {
 		self.view.layoutIfNeeded() 
 		completion(controllers) // setup complete. handoff here
 	}
+	
+	private func layoutFor(_ position: TabBarPosition, safeAreas: Bool) {
+		let leadingAnchor = safeAreas ? self.view.safeAreaLayoutGuide.leadingAnchor : self.view.leadingAnchor
+		let trailingAnchor = safeAreas ? self.view.safeAreaLayoutGuide.trailingAnchor : self.view.trailingAnchor
+		switch position {
+			case .top:
+				let topAnchor = safeAreas ? self.view.safeAreaLayoutGuide.topAnchor : self.view.topAnchor
+				NSLayoutConstraint.activate([self.customTabBar.topAnchor.constraint(equalTo: topAnchor)])
+			case .bottom:
+				let bottomAnchor = safeAreas ? self.view.safeAreaLayoutGuide.bottomAnchor : self.view.bottomAnchor
+				NSLayoutConstraint.activate([self.customTabBar.bottomAnchor.constraint(equalTo: bottomAnchor)])
+		}
+		NSLayoutConstraint.activate([
+			self.customTabBar.leadingAnchor.constraint(equalTo: leadingAnchor),
+			self.customTabBar.trailingAnchor.constraint(equalTo: trailingAnchor),
+			self.customTabBar.heightAnchor.constraint(equalToConstant: self.height)
+		])
+	}
+	
 	func changeTab(item: SubMenuTabItem) {
 		self.selectedIndex = item.tab ?? 0
 	}
@@ -125,3 +135,6 @@ extension SubTabViewController: CustomTabbedHeaderDelegate {
 	}
 }
 
+public enum TabBarPosition {
+	case top, bottom
+}
